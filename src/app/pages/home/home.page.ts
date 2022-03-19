@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FootballService } from 'src/app/services/api.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { FootballService } from 'src/app/services/api.service';
   styleUrls: ['home.page.scss'],
   providers: [FootballService],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   allCompetitionsData: any[];
   filterCompetitionsBySeason: any[];
   isInputValid: boolean;
@@ -16,7 +16,7 @@ export class HomePage {
   constructor(protected footballService: FootballService) {}
 
   searchValid(event) {
-    let numbers = /[0-9]|\./;
+    const numbers = /[0-9]|\./;
     if (
       event.target.value &&
       event.target.value.length === 4 &&
@@ -49,15 +49,15 @@ export class HomePage {
         item?.currentSeason?.startDate !== null &&
         item?.currentSeason?.startDate !== undefined
       ) {
-        let yearCompetition = new Date(
+        const yearCompetition = new Date(
           item.currentSeason.startDate
         ).getFullYear();
         return yearCompetition == event.target.value;
       }
     });
 
-    /* 
-      
+    /*
+
       Filter to free API Leagues?
 
       .filter(function (item) {

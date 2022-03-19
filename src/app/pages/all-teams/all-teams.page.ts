@@ -14,7 +14,8 @@ export class AllTeamsPage implements OnInit {
     private router: Router
   ) {}
 
-  teams: { competition: {}; season: {}; teams };
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  teams: { competition: any; season: any; teams: any };
 
   filterByTeam(id: number) {
     this.footballService.getByTeam(id).subscribe((data: any) => {

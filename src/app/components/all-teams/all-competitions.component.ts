@@ -16,7 +16,7 @@ export class AllCompetitionsComponent {
     private router: Router
   ) {}
 
-  @Input() competitions: any[];
+  @Input() competitions: any;
 
   async errorToast() {
     const toast = await this.toastController.create({
