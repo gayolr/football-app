@@ -1,0 +1,44 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/home"></ion-back-button>
+  </ion-buttons>
+  <ion-title>All Teams</ion-title>
+</ion-toolbar>
+
+<ion-content>
+  <ng-container *ngIf="teams; else error">
+    <div *ngFor="let team of teams?.teams">
+      <ion-card>
+        <div class="card">
+          <img class="card__logo" [src]="team.crestUrl" />
+        </div>
+
+        <ion-card-header>
+          <ion-card-subtitle> Founded: {{ team.founded}}</ion-card-subtitle>
+          <ion-card-title>{{ team.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Short Name: {{ team.tla}} <br />
+          Team colors: {{ team.clubColors}} <br />
+          Stadium: {{ team.venue}} <br />
+          Phone: {{ team.phone }} <br />
+          Website: {{ team.website}}
+          <div class="button-view">
+            <ion-button
+              fill="outline"
+              slot="end"
+              (click)="filterByTeam(team.id)"
+              >More Info</ion-button
+            >
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-container>
+
+  <ng-template #error>
+    <ion-item color="danger">
+      <ion-label> Team not found </ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Football App</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-searchbar
+  inputmode="numeric"
+  placeholder="Enter Season"
+  animated
+  maxlength="4"
+  (ionInput)="searchValid($event)"
+  (change)="filterCompetitionBySeason($event)"
+></ion-searchbar>
+<ion-content>
+  <ng-container *ngIf="isFilter">
+    <app-all-competitions [competitions]="filterCompetitionsBySeason"></app-all-competitions>
+  </ng-container>
+</ion-content>

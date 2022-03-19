@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> All Competitions </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="competitions?.length > 0; else error">
+    <div *ngFor="let competition of competitions">
+      <ion-item button (click)="filterAllTeams(competition.id)">
+        <ion-avatar slot="start">
+          <img [src]="competition.area.ensignUrl" />
+        </ion-avatar>
+        <ion-label>
+          {{ competition.area.name }} | {{ competition.name }}
+        </ion-label>
+      </ion-item>
+    </div>
+  </ng-container>
+
+  <ng-template #error>
+    <ion-item color="danger">
+      <ion-label> Season not found </ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>
