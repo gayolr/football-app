@@ -81,6 +81,6 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    /* this.getAllCompetition(); */
+    this.getAllCompetition();
   }
 }
